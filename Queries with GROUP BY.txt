@@ -1,0 +1,22 @@
+1:
+SELECT COUNT(`id`) AS `numero_di_iscritti`, YEAR(`enrolment_date`) AS  `anno_iscrizione`
+FROM `students`
+GROUP BY YEAR(`enrolment_date`);
+
+2:
+SELECT COUNT(`id`) AS `numero_di_insegnanti`, `office_address` 
+FROM `teachers`
+GROUP BY `office_address`;
+
+3:
+SELECT AVG(`vote`) AS `media_voti`, `courses`.`name` AS `course_name`, `exams`.`date`, `exams`.`hour`
+FROM `exam_student`
+JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id`
+JOIN `courses` ON `exams`.`course_id` = `courses`.`id`
+GROUP BY `exam_student`.`exam_id`;
+
+4:
+SELECT COUNT(`degrees`.`id`) AS `numero_di_corsi`, `departments`.`name`
+FROM `degrees`
+JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+GROUP BY `departments`.`name`;
